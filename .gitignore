@@ -1,0 +1,4 @@
+custom_lint.log
+.dart_tool/
+example_lint/custom_lint.log
+example_lint/.dart_tool/
