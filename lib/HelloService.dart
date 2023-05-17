@@ -1,5 +1,9 @@
-class oneService {}
+class AuthService {}
 
-class twoService {}
+// remove the next line
+// expect_lint: one_service_class_per_file
+class APIService {}
 
-class threeService {}
+// remove the next line
+// expect_lint: one_service_class_per_file
+class UselessService {}

@@ -1,10 +1,11 @@
 import 'package:analyzer/error/error.dart';
 import 'package:analyzer/error/listener.dart';
+import 'package:analyzer/source/source_range.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
 // A regex to check if Voldemort's name is mentioned in a string
 final _voldemortRegex = RegExp(
-  r'voldemort|\b(Tom[\s-]+(Marvolo[\s-]+)?Riddle)\b',
+  r'voldemort|\b(tom(?:[\s-]*marvolo)?[\s-]*riddle)\b',
   caseSensitive: false,
 );
 
@@ -54,9 +55,12 @@ class _ReplaceHisName extends DartFix {
   ) {
     // Callback fn that runs on every variable declaration in a file
     context.registry.addVariableDeclaration((node) {
+      final element = node.declaredElement;
+
       // `return` if the current variable declaration is not where the lint
       // error has appeared
-      if (!analysisError.sourceRange.intersects(node.sourceRange)) return;
+      if (element == null ||
+          !analysisError.sourceRange.intersects(node.sourceRange)) return;
 
       // Create a `ChangeBuilder` instance to do file operations with an action
       final changeBuilder = reporter.createChangeBuilder(
@@ -67,13 +71,12 @@ class _ReplaceHisName extends DartFix {
       changeBuilder.addDartFileEdit((builder) {
         // Use the `builder` to replace the variable name
         builder.addSimpleReplacement(
-          node.sourceRange,
+          SourceRange(element.nameOffset, element.nameLength),
           // the string to be replaced instead of variable name
-          node.declaredElement?.name.replaceAll(
-                _voldemortRegex,
-                "HeWhoMustNotBeNamed",
-              ) ??
-              "",
+          element.name.replaceAll(
+            _voldemortRegex,
+            "HeWhoMustNotBeNamed",
+          ),
         );
       });
     });

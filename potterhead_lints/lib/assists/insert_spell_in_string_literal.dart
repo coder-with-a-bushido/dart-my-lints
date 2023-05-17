@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:analyzer/source/source_range.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
 
-// Assist to suggest spells to replace in string literals
-class AddSpellsForString extends DartAssist {
+// Assist to suggest spells to insert in string literals
+class InsertSpellInStringLiteral extends DartAssist {
   @override
   void run(
     CustomLintResolver resolver,
@@ -29,7 +29,7 @@ class AddSpellsForString extends DartAssist {
       // Create `ChangeBuilder` instance to do file operations with an action
       final changeBuilder = reporter.createChangeBuilder(
         priority: 1,
-        message: 'Add a random spell to the string',
+        message: 'Insert a random spell in the string literal',
       );
       // Use the `changeBuilder` to make Dart file edits
       changeBuilder.addDartFileEdit((builder) {

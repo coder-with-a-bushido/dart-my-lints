@@ -7,8 +7,8 @@ class UtilMethodsBeStatic extends DartLintRule {
   UtilMethodsBeStatic() : super(code: _code);
 
   static const _code = LintCode(
-    name: 'static_utils_method',
-    problemMessage: 'Methods in Util classes should be static',
+    name: 'util_methods_be_static',
+    problemMessage: 'Methods of Utils class should be static',
   );
 
   @override
