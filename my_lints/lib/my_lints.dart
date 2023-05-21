@@ -6,10 +6,10 @@ import 'lint_rules/one_service_class_per_file.dart';
 import 'lint_rules/util_methods_be_static.dart';
 
 // Entrypoint of plugin
-PluginBase createPlugin() => _PotterheadLints();
+PluginBase createPlugin() => _MyLints();
 
 // The class listing all the [LintRule]s and [Assist]s defined by our plugin
-class _PotterheadLints extends PluginBase {
+class _MyLints extends PluginBase {
   // Lint rules
   @override
   List<LintRule> getLintRules(CustomLintConfigs configs) => [

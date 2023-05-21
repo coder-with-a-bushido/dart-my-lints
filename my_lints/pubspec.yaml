@@ -1,9 +1,9 @@
-name: potterhead_lints
+name: my_lints
 version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: '>=2.16.0 <3.0.0'
+  sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
   analyzer: ^5.0.0

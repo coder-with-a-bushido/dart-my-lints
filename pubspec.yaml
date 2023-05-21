@@ -3,12 +3,12 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: '>=2.16.0 <3.0.0'
+  sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
   riverpod: ^2.0.0
 
 dev_dependencies:
   custom_lint: ^0.3.4
-  potterhead_lints:
-    path: ./potterhead_lints
+  my_lints:
+    path: ./my_lints
