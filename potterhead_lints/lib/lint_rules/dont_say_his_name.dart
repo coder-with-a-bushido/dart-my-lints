@@ -20,7 +20,7 @@ class DontSayHisName extends DartLintRule {
   );
 
   // `run` is where you analyze a file and report lint errors
-  // Invoked on a file automatically
+  // Invoked on a file automatically on every file edit
   @override
   void run(
     CustomLintResolver resolver,
@@ -33,7 +33,7 @@ class DontSayHisName extends DartLintRule {
       // `return` if the regex doesn't find a match
       if (element == null || !_voldemortRegex.hasMatch(element.name)) return;
 
-      // report a lint error with the `code` and the respective `element`
+      // report a lint error with the `code` and the respective variable
       reporter.reportErrorForElement(code, element);
     });
   }
