@@ -1,4 +1,4 @@
-class AuthService {}
+class HelloService {}
 
 // remove the next line
 // expect_lint: one_service_class_per_file
